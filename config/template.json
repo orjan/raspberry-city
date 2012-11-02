@@ -1,0 +1,7 @@
+{
+    "teamcity" : {
+        "domain" : "mydomain.com",
+        "username" : "my-user-name",
+        "password" : "my-password"
+    }
+}

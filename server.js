@@ -1,14 +1,16 @@
 var teamcity = require('./lib/teamcity');
 var raspberry = require('./lib/raspberry');
 
+var tc = teamcity.create("http://176.34.231.33", "orjan", "SeaBassNinja");
+
 var checkBuildStatus = function() {
-	teamcity.failingProjects(function(count) {
-		console.log("Number of failed builds: " + count);
-		if (count === 0) {
-			//raspberry.off(4);
+	tc.hasFailingProjects().on('complete', function(buildStatus) {
+		var hasFailingProjects = buildStatus.count > 0;
+		if (hasFailingProjects) {
+			console.log("fail");
 		}
 		else {
-			//raspberry.on(4);
+			console.log("ok");
 		}
 	});
 };

@@ -1,9 +1,10 @@
-var teamcity = require('./lib/teamcity');
+var Emitter = require('events').EventEmitter;
+var TeamCity = require('./lib/teamcity');
 var raspberry = require('./lib/raspberry');
-var emitter = require('events').EventEmitter;
-var events = new emitter();
 
-var tc = teamcity.create("http://176.34.231.33", "orjan", "SeaBassNinja");
+var events = new Emitter();
+
+var tc = new TeamCity("http://176.34.231.33", "orjan", "SeaBassNinja");
 
 var checkBuildStatus = function() {
 	tc.hasFailingProjects().on('complete', function(buildStatus) {

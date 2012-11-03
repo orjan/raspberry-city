@@ -12,3 +12,7 @@ logs
 results
 
 npm-debug.log
+
+.idea/workspace.xml
+config/development.json
+config/runtime.json
